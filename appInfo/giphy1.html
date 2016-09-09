@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nick's API Cliffs Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+ 	<link rel='stylesheet' href='../assets/css/style.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container">
+	<!-- Jumbotron -->
+	<div class="jumbotron" style="background-color: black; color: yellow">
+		<h3 class="text-center">Nick's API Cliff Notes</h3>    
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class=row >
+							<div class="col-sm-12 col-md-12">
+								<ul class="nav navbar-nav navbar-right">
+        						<li class="dropdown">
+          						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">You'll find a lot more in <span class="caret"></span></a>
+          						<ul class="dropdown-menu">
+            					<li><a href="https://github.com/Giphy/GiphyAPI">API Home</a></li>
+            					</ul>
+        						</li>
+      							</ul>
+      							</div>
+      						</div>
+      					</div>
+				<div class="panel-body">
+					<tbody>				
+      				<h1>Giphy API</h1>  
+      				<p>Giphy is an animated GIF search engine.</p>  
+      				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>Public Beta Key</h3></span>The Giphy API is open to the public. We have instituted a simple, single public beta key system to let anyone try it out. The API key is required for all endpoints. <span><bold>The public beta key is "dc6zaTOxFJmzC” </bold></span>
+Please use this key while you develop your application and experiment with your integrations. Note: the public key is subject to rate limit constraints and we do not encourage live production deployments to use the public key. </p>
+					</div>
+					</div>
+					</div>  
+					<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>Overview</h3></span>The Giphy API implements a REST-like interface. Connections can be made with any HTTP or HTTPS enabled programming language. The Giphy API also implements CORS, allowing you to connect to Giphy from JavaScript / Web browsers on your own domain. The Giphy API provides multiple file sizes, dimensions, and formats of every GIF to meet every clients potential needs. You can view a guide to the rendition offering here.
+
+Search replicates the search found on Giphy. Translate converts words and phrases to GIFs and is designed to be used in messaging apps, e.g. the Giphy Slack integration. Trending pulls in the best GIFs from around the internet, hand curated by the Giphy editorial team. Random returns a single random GIF, optionally limited to a specified tag. Stickers are a separate library of animated, transparent GIFs (great for creation apps!). The Upload endpoint allows you to upload your content to Giphy.</p>
+					</div>
+					</div>
+					</div>	
+					<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>Search Endpoint</h3></span>Search all Giphy GIFs for a word or phrase. Punctuation will be stripped and ignored. Use a plus or url encode for phrases. Example paul+rudd, ryan+gosling or american+psycho. </p>
+					</div>
+					</div>
+					</div>          								
+					</tbody>						
+				</div>
+				<div class="panel-footer clearfix">
+					<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../index.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			<li><a href="../appTry/giphy2.html">Try it Yourself <span aria-hidden="true">&raquo;</span></a></li>
+              			</ul>
+            		</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="timesheet-logic.js"></script>
+	</body>
+</html>

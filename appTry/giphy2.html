@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nick's API Cliffs Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+ 	<link rel='stylesheet' href='../assets/css/style.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container">
+	<!-- Jumbotron -->
+	<div class="jumbotron" style="background-color: black; color: yellow">
+		<h3 class="text-center">Nick's API Cliff Notes</h3>    
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+          			<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/giphy1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>				
+				</div>
+				<div class="panel-body">
+					<tbody>
+						<div class="col-sm-8 col-md-6">
+    						<div class="thumbnail">
+      							<button data-person="Lucille Ball">Run </button>
+      							<div class="caption">
+        							<h3>Code</h3>
+        							<pre>$('button').on('click', function(){
+    $('.animalButton').removeClass('active');
+    $(this).addClass('active');
+
+    var p = $(this).data('person'); // <------------------------- 1. What is this in "this" case? 
+
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + p + "&api_key=dc6zaTOxFJmzC&limit=1";
+
+    $.ajax({url: queryURL, method: 'GET'})
+     .done(function(response) {
+         var results = response.data;
+
+         for(var i=0; i < results.length; i++){
+
+
+            if (results[i].rating == "r" || results[i].rating == "pg-13")
+            {
+
+            }
+            else {
+              var gifDiv = $('<div class="item">')
+
+             var rating = results[i].rating;
+
+             var p = $('<p>').text( "Rating: " + rating);
+
+             var personImage = $('<img>');
+             personImage.attr('src', results[i].images.fixed_height.url);
+
+             gifDiv.append(p)
+             gifDiv.append(personImage)
+
+             $('#gifsAppearHere').prepend(gifDiv);               
+            }
+
+         }
+        
+    }); 
+});</pre>        								
+      							</div>
+    						</div>
+  						</div>	 
+  						<div class="col-sm-8 col-md-6">
+    						<div class="thumbnail">
+      							<div class="caption">
+        							<div id="gifsAppearHere"> </div>       								
+      							</div>
+    						</div>
+  						</div>														
+					</tbody>						
+				</div>
+				<div class="panel-footer clearfix">
+					<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/giphy1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="../assets/javascripts/giphy.js"></script>
+	</body>
+</html>
