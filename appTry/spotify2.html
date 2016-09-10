@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nick's API Cliffs Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+ 	<link rel='stylesheet' href='../assets/css/style.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container">
+	<!-- Jumbotron -->
+	<div class="jumbotron" style="background-color: black; color: yellow">
+		<h3 class="text-center">Nick's API Cliff Notes</h3>    
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+          			<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/spotify1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>				
+				</div>
+				<div class="panel-body">
+					<tbody>
+						<div class="col-sm-8 col-md-6">
+    						<div class="thumbnail">
+      							<button>Run </button>
+      							<div class="caption">
+<pre>function getArtistTrack(artist){
+// Run an initial search to identify the artist unique Spotify ID
+var queryURL = "https://api.spotify.com/v1/search?q=" + artist + "&type=artist";
+$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+
+// Prints the entire object to console
+console.log(response);
+
+// Prints the Artist ID from the Spotify Object to console.
+var artistID = response.artists.items[0].id;
+
+// Then we build a SECOND URL to query another Spotify endpoint (this one for the tracks)
+var queryURLTracks = "https://api.spotify.com/v1/artists/" + artistID +"/top-tracks?country=US";
+
+// We then run a second AJAX call to get the tracks associated with that Spotify ID
+$.ajax({url: queryURLTracks, method: 'GET'}).done(function(trackResponse) {
+
+// Gets the tracks
+console.log(trackResponse);
+
+// Builds a Spotify player playing the top song associated with the artist. (NOTE YOU NEED TO BE LOGGED INTO SPOTIFY)
+var player = '&lt;iframe src="https://embed.spotify.com/?uri=spotify:track:'+trackResponse.tracks[0].id+'" frameborder="0" allowtransparency="true"&gt;&lt;/iframe&gt;';
+
+// Appends the new player into the HTML
+$("#playerDiv").append(player)
+})
+}); 	
+}
+
+// On Button Click for Artist Selection
+$('button').on('click', function(){
+
+// Grab the Artist Name
+var artist = "Kevin Devine";
+
+// Run the Artist Player Function (Passing in the Artist as an Argument)
+getArtistTrack(artist);
+
+// Prevents moving to the next page
+return false;
+});</pre>        								
+      							</div>
+    						</div>
+  						</div>	 
+  						<div class="col-sm-8 col-md-6">
+    						<div class="thumbnail">
+      							<div class="caption">
+        							<div id="playerDiv"></div>      								
+      							</div>
+    						</div>
+  						</div>										
+					</tbody>						
+				</div>
+				<div class="panel-footer clearfix">
+					<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/spotify1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="../assets/javascripts/spotify.js"></script>
+	</body>
+</html>

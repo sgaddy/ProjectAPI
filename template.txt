@@ -1,0 +1,9 @@
+<h1></h1>
+<p></p>	
+<div class="col-sm-6 col-md-4">
+<div class="thumbnail">
+<div class="caption">
+<p><span><h3>Description</h3></span></p>
+</div>
+</div>
+</div>										 																														  

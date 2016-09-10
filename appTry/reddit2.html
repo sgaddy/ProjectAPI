@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nick's API Cliffs Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+ 	<link rel='stylesheet' href='../assets/css/style.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container">
+	<!-- Jumbotron -->
+	<div class="jumbotron" style="background-color: black; color: yellow">
+		<h3 class="text-center">Nick's API Cliff Notes</h3>    
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+          			<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/reddit1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>				
+				</div>
+				<div class="panel-body">
+					<tbody>
+						<div class="col-sm-8 col-md-6">
+							<div class="thumbnail">
+							<p>Enter a domain without <code>http://www.</code> to browse recent submissions in Reddit.</p>  
+    						<div id="searchfield">
+      						<form id="domainform" name="domainform">
+        					<input type="text" class="search" id="s" name="s" placeholder="ex: youtube.com">
+        					<button id="submitBid" type="submit">Run</button>
+      						</form>
+      						</div>
+    						<div class="caption">
+<pre>
+$(function(){
+ 
+$('#domainform').on('submit', function(event){
+event.preventDefault();
+$('#content').html('&lt;center>&lt;img src="img/loader.gif" alt="loading...">&lt;/center>');
+var domain = $('#s').val();
+var newdomain = domain.replace(/\//g, ''); // remove all slashes
+var requrl = "http://www.reddit.com/domain/";
+
+var fullurl = requrl + domain + ".json";
+
+$.getJSON(fullurl, function(json){
+var listing = json.data.children;
+var html = '&lt;ul class="linklist">\n';
+    for(var i=0; i&lt;2; i++) {
+    var obj = listing[i].data;
+
+    var votes     = obj.score;
+    var title     = obj.title;
+    var subtime   = obj.created_utc;
+    var thumb     = obj.thumbnail;
+    var subrdt    = "/r/"+obj.subreddit;
+    var redditurl = "http://www.reddit.com"+obj.permalink;
+    var subrdturl = "http://www.reddit.com/r/"+obj.subreddit+"/";
+    var exturl    = obj.url;
+	
+    var timeago = timeSince(subtime);
+
+    if(obj.thumbnail === 'default' || obj.thumbnail === 'nsfw' || obj.thumbnail === '')
+      thumb = 'img/default-thumb.png';
+  
+    html += '&lt;li class="clearfix">\n';
+    html += '&lt;img src="'+thumb+'" class="thumbimg">\n';
+    html += '&lt;div class="linkdetails">&lt;h2>'+title+'&lt;/h2>\n';
+    html += '&lt;p class="subrdt">posted to &lt;a href="'+subrdturl+'" target="_blank">'+subrdt+'&lt;/a> '+timeago+'&lt;/p>';
+    html += '&lt;>&lt;a href="'+exturl+'" class="blubtn" target="_blank">visit link&lt;/a> - &lt;a href="'+redditurl+'" class="blubtn" target="_blank">view on reddit&lt;/a>&lt;/p>';
+    html += '&lt;/div>&lt;/li>\n';
+  } // end for{} loop
+  htmlOutput(html);
+
+  }); // end getJSON()
+}); // end .on(submit) listener
+});
+function htmlOutput(html) {
+    html += '&lt;/ul>';
+    
+    $('#content').html(html);
+    //console.log(html);
+  }
+
+  /**
+   * Return time since link was posted
+   * http://stackoverflow.com/a/3177838/477958
+  **/
+  function timeSince(date) {
+    var seconds = Math.floor(((new Date().getTime()/1000) - date))
+
+    var interval = Math.floor(seconds / 31536000);
+if (interval >= 1) {
+      if(interval == 1) return interval + " year ago";
+      else 
+        return interval + " years ago";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) {
+      if(interval == 1) return interval + " month ago";
+      else
+        return interval + " months ago";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) {
+      if(interval == 1) return interval + " day ago";
+      else
+        return interval + " days ago";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) {
+      if(interval == 1) return interval + " hour ago";
+      else
+      	return interval + " hours ago";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+      if(interval == 1) return interval + " minute ago";
+      else
+        return interval + " minutes ago";
+    }
+    return Math.floor(seconds) + " seconds ago";
+  }
+</pre>							
+      							</div>
+    						</div>
+  						</div>	 
+  						<div class="col-sm-8 col-md-6">
+    						<div class="thumbnail">
+      							<div class="caption">
+        							<div id="content"></div>        								
+      							</div>
+    						</div>
+  						</div>														
+					</tbody>						
+				</div>
+				<div class="panel-footer clearfix">
+					<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../appInfo/reddit1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			</ul>
+            		</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="../assets/javascripts/reddit.js"></script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nick's API Cliffs Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+ 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+ 	<link rel='stylesheet' href='../assets/css/style.css' type='text/css'/>
+</head>
+<body>
+
+<div class="container">
+	<!-- Jumbotron -->
+	<div class="jumbotron" style="background-color: black; color: yellow">
+		<h3 class="text-center">Nick's API Cliff Notes</h3>    
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class=row >
+							<div class="col-sm-12 col-md-12">
+								<ul class="nav navbar-nav navbar-right">
+        						<li class="dropdown">
+          						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">You'll find a lot more in <span class="caret"></span></a>
+          						<ul class="dropdown-menu">
+            					<li><a href="http://docs.sqoot.com/v2/overview.html">API Home</a></li>
+            					</ul>
+        						</li>
+      							</ul>
+      							</div>
+      						</div>
+      					</div>
+				<div class="panel-body">
+					<tbody>				
+      				<h1>Sqoot API</h1>  
+      				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>CORS (Cross-Origin Resource Sharing)</h3></span>The API supports CORS for AJAX requests as a way of getting around same origin policy. That means you can make cross-domain requests to the API without having to use JSONP. CORS is just special response headers sent from the server that tells the client (the browser) that cross-domain requests are allowed, so it doesn’t require any extra steps client-side to make it work. You just make your AJAX requests as normal.
+CORS is supported by most modern browsers—in some cases it’s been supported for many versions back—but if you need to support legacy browsers you’ll need to use JSONP.</p>
+					</div>
+					</div>
+					</div> 
+					<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>JSONP</h3></span>We has it. If you need to hit our API from the client and need to support legacy browsers, you’ll need to use JSONP to get around same origin policy.</p>
+					</div>
+					</div>
+					</div>
+					<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+					<div class="caption">
+					<p><span><h3>Time formatting</h3></span>There’s just no great way to represent time in JavaScript. We decided to represent all times as human-readable, ISO 8601 strings in UTC. So January 24th, 2013 at 1:00PM would look be “2012-01-24T13:00:00Z”.</p>
+					</div>
+					</div>
+					</div>
+					</tbody>						
+				</div>
+				<div class="panel-footer clearfix">
+					<nav aria-label="...">
+              			<ul class="pager">
+              			<li><a href="../index3.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../index.html">Home</a></li>
+              			<li><a href="../appTry/sqoot1.html">Try it Yourself <span aria-hidden="true">&raquo;</span></a></li>
+              			</ul>
+            		</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="timesheet-logic.js"></script>
+	</body>
+</html>
