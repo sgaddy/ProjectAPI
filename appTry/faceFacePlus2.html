@@ -24,7 +24,7 @@
 				<div class="panel-heading">
           			<nav aria-label="...">
               			<ul class="pager">
-              			<li><a href="../appInfo/faceFacePlus1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../appInfo/bitcoinCharts1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
               			<li><a href="../index.html">Home</a></li>
               			</ul>
             		</nav>				
@@ -33,19 +33,31 @@
 					<tbody>
 						<div class="col-sm-8 col-md-6">
     						<div class="thumbnail">
-      							<img src="..." alt="...">
+      							
       							<div class="caption">
-        							<h3>Thumbnail label</h3>
-        								<p>...</p>        								
+      							<button>Run</button>
+        							<h3>Face ++</h3><pre>
+var API_SECRET="IWofxizMQutZMb3ANra9aAZTbE-IWXTz";
+var API_KEY="6593a73d0b444f183b794332424bcf4e";
+	$( "button" ).click(function( e ) {
+        e.preventDefault();
+		var queryURL="https://apius.faceplusplus.com/v2/detection/detect?url=http%3A%2F%2Fwww.faceplusplus.com%2Fwp-content%2Fthemes%2Ffaceplusplus%2Fassets%2Fimg%2Fdemo%2F13.jpg%3Fv%3D2&api_secret="+API_SECRET+"&api_key="+API_KEY+"&attribute=glass,pose,gender,age,race,smiling"
+        console.log(queryURL)
+		$.ajax({url: queryURL,method: 'GET'}).done(function(response) {
+	     $('#response').html(JSON.stringify(response.face[0].attribute));
+		}); 
+        return false;
+    })  
+    </pre>      								
       							</div>
     						</div>
   						</div>	 
   						<div class="col-sm-8 col-md-6">
     						<div class="thumbnail">
-      							<img src="..." alt="...">
+      							
       							<div class="caption">
-        							<h3>Thumbnail label</h3>
-        								<p>...</p>        								
+        							<h3>JSON</h3>
+        								<div id="response"></div>       								
       							</div>
     						</div>
   						</div>														
@@ -54,7 +66,7 @@
 				<div class="panel-footer clearfix">
 					<nav aria-label="...">
               			<ul class="pager">
-              			<li><a href="../appInfo/faceFacePlus1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
+              			<li><a href="../appInfo/bitcoinCharts1.html"><span aria-hidden="true">&laquo;</span> Back</a></li>
               			<li><a href="../index.html">Home</a></li>
               			</ul>
             		</nav>
@@ -63,6 +75,6 @@
 		</div>
 	</div>
 	<!-- Javascript -->
-	<script src="timesheet-logic.js"></script>
+	<script src="../assets/javascripts/face.js"></script>
 	</body>
 </html>
